@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+<div style="margin: 100px auto;
+  background: #66b953;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;">
+      
+  <div id="calculator">
+    <form>
+      <p style=" padding:20px 0px">
+        <p style=" padding:20px 0px">
+        <input style="font-size:18px; padding: 10px; 0px; width:90%; text-align:left; color:#333" id="billamt" type="text" placeholder="Bill amount">
+         <p style=" padding:20px 0px">
+        
+              <select style="padding:10px; font-size:18px; color:#333; width: 90%" id="serviceQual">
+            <option disabled selected value="0">How was the service?</option>
+            <option value="0.2">20% - Outstanding</option>
+            <option value="0.15">15% - Good</option>
+            <option value="0.1">10% - It was OK</option>
+            <option value="0.05">5% - Bad</option>
+            <option value="0.0">0% - Terrible</option>
+        </select>
+
+    </form>
+      <p style=" padding:20px 0px">
+    <input style="font-size:18px;padding: 10px; 0px; width:90%; text-align:left;color:#333" id="peopleamt" type="text" placeholder="Number of people paying"><p style=" padding:20px 0px">  <div style="
+display:inline-block; width:90%">
+    <button type="button" style="color:#fff; padding:10px 20px; background-color: #333; font-size:18px" id="calculate">Calculate</button>
+<button style="color:#333; padding:10px 20px; background-color: #fff; font-size:18px" onclick="window.location.href='https://dryslopeskiing.com/tip-calculator/';" >Reload</button>
+      </div> 
+  </div>
+
+  <!--calculator end-->
+        <p style="color:#fff; font-size: 18px; padding:20px 0px">
+  <div style="border: 5px solid hsl(0, 0%, 40%);
+  
+  /* #2 */
+  padding: 10px;
+  background-color: 	#f6f6f6;
+  
+  /* #3 */
+  outline: 5px solid hsl(0, 0%, 60%);
+  
+  /* #4 AND INFINITY!!! (CSS3 only) */
+  box-shadow:
+      0 0 0 10px hsl(0, 0%, 80%),
+      0 0 0 15px hsl(0, 0%, 90%); width: 80%;margin: 0 auto" id="totalTip">
+    
+    <span style="color:#36434c; font-size: 18px" id="each">Total Tip:</san><p></p>
+    <span style="color:#36434c; font-size: 40px; font-weight: 700"  id="billtip">0.00</span><p></p>
+    
+     <span style="color:#36434c; font-size: 18px" id="each">Tip Per Person:</span><p></p>
+    <span style="color:#36434c; font-size: 40px; font-weight: 700"  id="tip">0.00</span><p></p>
+    
+     <span style="color:#36434c; font-size: 18px" id="each">Total Amount:</span><p></p>
+    <span style="color:#36434c; font-size: 40px; font-weight: 700"  id="totaltotal">0.00</span><p></p>
+    
+    
+  </div>
+
+   <p style=" padding:20px 0px">
+        <p style=" padding:20px 0px">
+  <!--totalTip end-->
+
+    
+</div>
+<!--container end-->
+
+<script>
+//Calculate Tip
+function calculateTip() {
+  var billAmt = document.getElementById("billamt").value;
+  var serviceQual = document.getElementById("serviceQual").value;
+  var numOfPeople = document.getElementById("peopleamt").value;
+  
+var totalbill = document.getElementById("billamt").value;  
+
+  
+    //Check to see if this input is empty or less than or equal to 1
+  if (numOfPeople === "" || numOfPeople <= 1) {
+    numOfPeople = 1;
+    document.getElementById("each").style.display = "block";
+  } else {
+    document.getElementById("each").style.display = "block";
+  }
+
+
+  //Calculate tip
+  var total = (billAmt * serviceQual) / numOfPeople;
+  var billtotal = (billAmt * serviceQual);
+  var totaltotal = totalbill
+  
+  //round to two decimal places
+  totaltotal = parseFloat(totaltotal) + parseFloat(billtotal);
+  
+  
+total = Math.round(total * 100) / 100;
+billtotal = Math.round(billtotal * 100)/100;
+  
+  
+
+  //next line allows us to always have two digits after decimal point
+  total = total.toFixed(2);
+  billtotal = billtotal.toFixed(2);
+totaltotal = totaltotal.toFixed(2);
+  //Display the tip
+  document.getElementById("totalTip").style.display = "block";
+  document.getElementById("tip").innerHTML = total;
+ document.getElementById("billtip").innerHTML = billtotal;
+  
+document.getElementById("totaltotal").innerHTML = totaltotal;  
+  
+  
+}
+  //Hide the tip amount on load
+document.getElementById("totalTip").style.display = "none";
+document.getElementById("each").style.display = "none";
+
+
+//click to call function
+document.getElementById("calculate").onclick = function() {
+  calculateTip();
+
+
+
+};</script>
+</body>
+</html>
